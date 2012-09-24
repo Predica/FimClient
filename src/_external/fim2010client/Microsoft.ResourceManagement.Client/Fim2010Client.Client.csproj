@@ -165,6 +165,8 @@
     <Compile Include="WsTrust\SecurityTokenService.cs" />
     <Compile Include="WsTrust\SecurityTokenServiceClient.cs" />
     <Compile Include="WsTrust\WsTrust.cs" />
+    <Compile Include="_Predica\CodeInit\Bindings.cs" />
+    <Compile Include="_Predica\CodeInit\DefaultEndpoints.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.ResourceManagement.ObjectModel\Fim2010Client.ObjectModel.csproj">

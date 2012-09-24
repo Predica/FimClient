@@ -46,6 +46,7 @@
     <Compile Include="Client\executing_sorted_queries.cs" />
     <Compile Include="Client\executing_xpath_queries.cs" />
     <Compile Include="Client\fetching_objects_by_id.cs" />
+    <Compile Include="Client\passing_configuration_from_code.cs" />
     <Compile Include="Client\Querying\AttributesToFetchTests.cs" />
     <Compile Include="Client\Querying\FilterTests.cs" />
     <Compile Include="Client\Querying\PaginationTests.cs" />

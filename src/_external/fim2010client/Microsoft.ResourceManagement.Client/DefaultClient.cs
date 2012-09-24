@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Schema;
+using Microsoft.ResourceManagement.Client.CodeInit;
 using Microsoft.ResourceManagement.Client.WsEnumeration;
 using System.ServiceModel;
 using Microsoft.ResourceManagement.Client;
@@ -51,6 +52,17 @@ namespace Microsoft.ResourceManagement.Client {
         #endregion
 
         #region Constructors
+
+        public DefaultClient(string fimUrl)
+        {
+            this.wsTransferClient = new WsTransferClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsTransfer(fimUrl));
+            this.wsTransferFactoryClient = new WsTransferFactoryClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsTransferFactory(fimUrl));
+            this.wsEnumerationClient = new WsEnumerationClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsEnumeration(fimUrl));
+            this.mexClient = new MexClient(Bindings.MetadataExchangeHttpBinding_IMetadataExchange, DefaultEndpoints.Mex(fimUrl));
+            this.alternateClient = new AlternateClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.Alternate(fimUrl));
+            this.resourceFactory = new RmResourceFactory();
+            this.requestFactory = new RmRequestFactory();
+        }
 
         /// <summary>
         /// Default constructor.

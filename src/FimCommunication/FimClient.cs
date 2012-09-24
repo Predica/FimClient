@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Xml.Schema;
 using Microsoft.ResourceManagement.Client;
+using Microsoft.ResourceManagement.Client.CodeInit;
 using Microsoft.ResourceManagement.Client.WsEnumeration;
 using Microsoft.ResourceManagement.ObjectModel;
 using System;
@@ -29,8 +31,13 @@ namespace Predica.FimCommunication
         private DefaultClient _defaultClient;
         private WsEnumerationClient _pagedQueriesClient;
 
-        public FimClient()
+        private readonly string _fimUrl;
+        private readonly NetworkCredential _credential;
+
+        public FimClient(string fimUrl = null, NetworkCredential credential = null)
         {
+            _fimUrl = fimUrl;
+            _credential = credential;
             Initialize();
         }
 
@@ -60,9 +67,20 @@ namespace Predica.FimCommunication
                 _log.Debug(ctx.Format("Initializing FIM client for user {0}"), System.Threading.Thread.CurrentPrincipal.Identity.Name);
 
                 // client used for paged queries
-                _pagedQueriesClient = new WsEnumerationClient();
+                _pagedQueriesClient = _fimUrl == null
+                    ? new WsEnumerationClient()
+                    : new WsEnumerationClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsEnumeration(_fimUrl));
+
                 // client used for all other operations
-                _defaultClient = new DefaultClient();
+                _defaultClient = _fimUrl == null
+                    ? new DefaultClient()
+                    : new DefaultClient(_fimUrl);
+
+                if (_credential != null)
+                {
+                    _pagedQueriesClient.ClientCredentials.Windows.ClientCredential = _credential;
+                    _defaultClient.ClientCredential = _credential;
+                }
 
                 // reusing schema for all subsequent instances for performance reasons
                 // each schema-refresh operation downloads ~1MB of xml that never changes

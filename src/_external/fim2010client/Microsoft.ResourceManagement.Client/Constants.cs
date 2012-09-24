@@ -13,6 +13,7 @@ namespace Microsoft.ResourceManagement.Client {
             public const String ResourceFactory = "ResourceManagementService/ResourceFactory";
             public const String Enumeration = "ResourceManagementService/Enumeration";
             public const String Alternate = "ResourceManagementService/Alternate";
+            public const String Mex = "ResourceManagementService/MEX";
         }
 
         public enum Endpoints {
@@ -32,6 +33,9 @@ namespace Microsoft.ResourceManagement.Client {
             public const String ReferenceProperties = "ReferenceProperties";
             public const String EndpointAddress = "EndpointAddress";
             public const String Address = "Address";
+
+            public const String SpnPrefix = "FIMService/";
+            public const String FimPort = ":5725";
         }
 
         internal class Soap {
