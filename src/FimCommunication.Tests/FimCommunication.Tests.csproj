@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CDA6A0C1-EFF2-46FA-AADE-9DB6E1EC2488}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Predica.FimCommunication.Tests</RootNamespace>
+    <AssemblyName>Predica.FimCommunication.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="xunit">
+      <HintPath>..\..\lib\xunit-1.8\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\..\lib\xunit-1.8\xunit.extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\creating_updating_deleting_objects.cs" />
+    <Compile Include="Client\executing_paged_queries.cs" />
+    <Compile Include="Client\executing_sorted_queries.cs" />
+    <Compile Include="Client\executing_xpath_queries.cs" />
+    <Compile Include="Client\fetching_objects_by_id.cs" />
+    <Compile Include="Client\Querying\AttributesToFetchTests.cs" />
+    <Compile Include="Client\Querying\FilterTests.cs" />
+    <Compile Include="Client\Querying\PaginationTests.cs" />
+    <Compile Include="fim2010client\RmResourceChangesTests.cs" />
+    <Compile Include="FimIntegrationTestBase.cs" />
+    <Compile Include="Logging\LogContextTests_Format.cs" />
+    <Compile Include="Logging\LogContextTests_Tokenize.cs" />
+    <Compile Include="Logging\LogContextTests_TokenizeWithTime.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Utils\Randomizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_external\fim2010client\Microsoft.ResourceManagement.Client\Fim2010Client.Client.csproj">
+      <Project>{6C1064E6-72B3-41AA-B543-4164EC056F68}</Project>
+      <Name>Fim2010Client.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\_external\fim2010client\Microsoft.ResourceManagement.ObjectModel\Fim2010Client.ObjectModel.csproj">
+      <Project>{CECB3A49-A780-4558-A402-1F3FF42B0B18}</Project>
+      <Name>Fim2010Client.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FimCommunication\FimCommunication.csproj">
+      <Project>{B296EE14-B117-4B23-8E36-3E15932D8E8E}</Project>
+      <Name>FimCommunication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

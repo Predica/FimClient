@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fim2010Client.Client", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fim2010Client.ObjectModel", "src\_external\fim2010client\Microsoft.ResourceManagement.ObjectModel\Fim2010Client.ObjectModel.csproj", "{CECB3A49-A780-4558-A402-1F3FF42B0B18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FimCommunication", "src\FimCommunication\FimCommunication.csproj", "{B296EE14-B117-4B23-8E36-3E15932D8E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FimCommunication.Tests", "src\FimCommunication.Tests\FimCommunication.Tests.csproj", "{CDA6A0C1-EFF2-46FA-AADE-9DB6E1EC2488}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B296EE14-B117-4B23-8E36-3E15932D8E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B296EE14-B117-4B23-8E36-3E15932D8E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B296EE14-B117-4B23-8E36-3E15932D8E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B296EE14-B117-4B23-8E36-3E15932D8E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDA6A0C1-EFF2-46FA-AADE-9DB6E1EC2488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA6A0C1-EFF2-46FA-AADE-9DB6E1EC2488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDA6A0C1-EFF2-46FA-AADE-9DB6E1EC2488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDA6A0C1-EFF2-46FA-AADE-9DB6E1EC2488}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
