@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.ResourceManagement.ObjectModel;
+using System.Runtime.Serialization;
+
+namespace $NAMESPACE {
+    
+    /// <summary>
+    /// ${fimtype} resource.
+    /// Automatically generated on $(Get-Date)
+    /// </summary>
+    [Serializable]
+    public partial class ${clrTypeName} : RmResource {
+
+        /// <summary>
+        /// The type of the wrapped resource.
+        /// </summary>
+        protected const String ResourceType = @`"${fimtype}`";
+
+        /// <summary>
+        /// Gets the FIM name of the wrapped resource type.
+        /// </summary>
+        /// <returns>The FIM name of the wrapped resource type.</returns>
+        public override string GetResourceType() {
+            return ResourceType;
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public ${clrTypeName}()
+            : base() {
+        }
+
+        /// <summary>
+        /// Constructor for serialization.
+        /// </summary>
+        protected ${clrTypeName}(
+            SerializationInfo info,
+            StreamingContext context)
+            : base(info, context) {
+        }
+
+        #region promoted properties

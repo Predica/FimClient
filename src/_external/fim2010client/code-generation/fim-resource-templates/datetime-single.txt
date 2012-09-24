@@ -1,0 +1,9 @@
+
+        /// <summary>
+        /// $($attribute.DisplayName)
+        /// $($attribute.Description)
+        /// </summary>
+        public DateTime? $($attribute.CsName) {
+            get { return GetNullable<DateTime>(AttributeNames.$($attribute.CsName)); }
+            set { SetNullable (AttributeNames.$($attribute.CsName), value); }
+        }

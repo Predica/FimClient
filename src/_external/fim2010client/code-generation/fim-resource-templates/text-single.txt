@@ -1,0 +1,9 @@
+
+        /// <summary>
+        /// $($attribute.DisplayName)
+        /// $($attribute.Description)
+        /// </summary>
+        public string $($attribute.CsName) {
+            get { return GetString(AttributeNames.$($attribute.CsName)); }
+            set { base[AttributeNames.$($attribute.CsName)].Value = value; }
+        }

@@ -1,0 +1,153 @@
+<table border="0">
+<tbody>
+<tr>
+<th style="text-align: center; background-color: #c0c0c0; padding-left: 10px; padding-right: 10px; font-weight: bold;">Name</th> <th style="text-align: center; background-color: #c0c0c0; padding-left: 10px; padding-right: 10px; font-weight: bold;">Latest Version</th>
+</tr>
+<tr>
+<td style="text-align: center; background-color: #f0f0f0; padding-left: 10px; padding-right: 10px;">C# strongly-typed resources and helper classes generators</td>
+<td style="text-align: center; background-color: #f0f0f0; padding-left: 10px; padding-right: 10px;">1.1</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Description</strong></p>
+Set of scripts to create C# wrappers for strongly-typed resources (RmPerson, RmGroup etc) and other helper classes, reading types and attributes definitions in FIM.<br/> 
+Generating the C# files from the schema, rather than getting some C# files directly, allows to include user-defined types and attributes.<br/> 
+The generated files can be included in a project to provide 
+<ul>
+<li>Support for strongly typed resources.</li>
+<li>Intellisense support for types and attribute names.<br/> 
+</ul>
+
+<p><strong>Requirements</strong></p>
+To run the scripts you need<br/> 
+<ul>
+<li><strong>PowerShell</strong> </li>
+<li>The <strong>FIMAutomation </strong> PowerShell snapin.</li>
+</ul>
+
+<p style="color:red"><strong>fim-resource</strong> - added in version 1.1</p>
+Creates a C# file with the definition of a strongly typed resource, i.e. a class extending RmResource for a particular FIM resource definition.</br>
+The scripts reads the type definition from the FIM schema and then expands some templates, which are text files located under the "fim-resource-templates" folder.</br>
+<br/>
+<strong>Important:</strong>After generating a new class, you must modify the CreateResource method of the DefaultResourceTypeFactory class. For example, to add support for the RmSet class, you could do as follows:<br/>
+<pre>public virtual RmResource CreateResource(string resourceType) {
+    if (String.IsNullOrEmpty(resourceType)) {
+        return new RmResource();
+    }
+    String upperCaseResourceType = resourceType.ToUpperInvariant();
+    switch (upperCaseResourceType) {
+    case @"GROUP":
+        return new RmGroup();
+    case @"PERSON":
+        return new RmPerson();
+    // add this case statement to add support for strongly-typed sets.    
+    case @"SET":
+        return new RmSet();
+    default:
+        return new RmResource();
+    }
+}
+</pre>
+For more details, you can have a look at <a href="http://espace.cern.ch/idm/Lists/Posts/Post.aspx?ID=14">this post.</a><br/>
+<br/>
+About template files:
+<ul>
+<li>"header.txt" and "footer.txt" are the beginning and end of the class definition.</li>
+<li>Each property is implemented reading a template file whose name is given by the resource type and multiplicity: a single-valued boolean property is read from "boolean-single.txt", a multi-valued reference is read from "reference-multi.txt" and so on. If a corresponding file is not found, the property is ignored and a warning is written.</li>
+<li>The base templates provided with the script use nullable types for value-type attributes (int, bool).</li>
+<li>Using nullable types requires adding a method to the base class RmResource; a version of the RmResource class that provides this functionality can be found in the download package.</li>
+<li>An alternative set of templates, not using nullable types, is provided in the "fim-resource-templates - non-nullable" folder; if you want to use those template, just rename the folder.</li>
+<li>You can of course customize the templates to suit your needs; the template files should hopefully be easy to edit and extend.</li>
+</ul>
+<br/>
+Please note that the classes are generated as <strong>partial classes</strong>; therefore, if for example you want to add a method to a particular class, you can do so in a separate file, so that if you re-generate the automatically created part, your custom method is not lost.<br/>
+<br/>
+Example (much code and comments omitted for clarity):
+<pre>public partial class RmPerson : RmResource {
+
+    public string AccountName {
+        get {
+            return GetString(AttributeNames.AccountName);
+        }
+        set {
+            base[AttributeNames.AccountName].Value = value;
+        }
+    }
+    
+    public DateTime? EmployeeStartDate {
+        get {
+            return GetNullable&lt;DateTime&gt;(AttributeNames.EmployeeStartDate);
+        }
+        set {
+            base[AttributeNames.EmployeeStartDate].Value = value;
+        }
+    }
+    
+    // more attributes and code...        
+</pre>
+
+<p><strong>fim-attribute-names</strong></p>
+Creates a C# file containing a class with constants for FIM attribute names. <br/> 
+<br/>
+Example:<br/>
+<pre>public static class AttributeNames {
+
+    /// &lt;summary&gt;
+    /// Account Name
+    /// User's log on name
+    /// &lt;/summary&gt;
+    public const string AccountName = &quot;AccountName&quot;;
+    // more attributes...
+
+}
+</pre>
+
+<p><strong>fim-attribute-values</strong></p>
+Creates a C# file containing classes with constants for FIM attribute values; the attributes considered are those having a validation string (StringRegex attribute) in the form ^(value1|value2|valueN)$.<br/> 
+If an empty string is a valid value for the attribute, i.e. the validation string is in the form <br/>
+^(value1|value2|valueN)?$<br/> 
+then also a costant with an empty string is generated.<br/>
+<br/>
+Example:<br/>
+<pre>public static class EmployeeTypeValues {
+    public const string EmptyEmployeeType = &quot;&quot;;
+    public const string Contractor = &quot;Contractor&quot;;
+    public const string Intern = &quot;Intern&quot;;
+    public const string FullTimeEmployee = &quot;Full Time Employee&quot;;
+}
+</pre>
+
+<p><strong>fim-type-names</strong></p>
+Creates a C# file containing a class with constants for FIM type names. <br/> 
+<br/>
+Example:<br/>
+<pre>public static class TypeNames {
+    /// &lt;summary&gt;
+    /// User
+    /// This resource defines applicable policies to manage incoming requests. 
+    /// &lt;/summary&gt;
+    public const string Person = &quot;Person&quot;;
+    
+    // more definitions...        
+}
+
+</pre>
+
+<p><strong>Usage</strong></p> 
+All the script display an help message if invoked with the <strong>-help</strong> switch.<br/> 
+The most relevant parameters are the following:<br/>
+<ul>
+<li><strong>uri &lt;string&gt;</strong> : the base service address. Default: 'http://localhost:5725'</li>
+<li><strong>credential &lt;PSCredential&gt;</strong> : the credentials to use to invoke the service, as returned by the Get-Credential cmdlet. Default: current user's credentials.</li>
+<li><strong>outfile &lt;string&gt;</strong> : the output file name. Default varies according to the script.</li>
+<li><strong>namespace &lt;string&gt;</strong> : the namespace of the generated class. Default: 'IdentityManagement'</li>
+</ul>
+
+<p><strong>Download</strong></p>
+<p style="BORDER-BOTTOM: green 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 10px">To download this script, use <a href="http://espace.cern.ch/idm/Downloads/ps-scripts.zip">this link</a>.<br />
+To get to the FIM ScriptBox, use <a href="http://social.technet.microsoft.com/Forums/en-US/ilm2/thread/807617bc-b560-4cbe-a137-b9f338bfbd8e">this link</a>.
+</p>
+
+<hr class="sig" />
+Paolo Tedesco - http://espace.cern.ch/idm

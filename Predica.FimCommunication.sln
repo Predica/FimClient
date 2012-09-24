@@ -1,8 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fim2010client", "fim2010client", "{26A9AD02-C1A3-4CB0-88E8-26F48BC15386}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fim2010Client.Client", "src\_external\fim2010client\Microsoft.ResourceManagement.Client\Fim2010Client.Client.csproj", "{6C1064E6-72B3-41AA-B543-4164EC056F68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fim2010Client.ObjectModel", "src\_external\fim2010client\Microsoft.ResourceManagement.ObjectModel\Fim2010Client.ObjectModel.csproj", "{CECB3A49-A780-4558-A402-1F3FF42B0B18}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C1064E6-72B3-41AA-B543-4164EC056F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C1064E6-72B3-41AA-B543-4164EC056F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C1064E6-72B3-41AA-B543-4164EC056F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C1064E6-72B3-41AA-B543-4164EC056F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECB3A49-A780-4558-A402-1F3FF42B0B18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C1064E6-72B3-41AA-B543-4164EC056F68} = {26A9AD02-C1A3-4CB0-88E8-26F48BC15386}
+		{CECB3A49-A780-4558-A402-1F3FF42B0B18} = {26A9AD02-C1A3-4CB0-88E8-26F48BC15386}
 	EndGlobalSection
 EndGlobal

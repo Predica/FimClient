@@ -1,0 +1,9 @@
+
+        /// <summary>
+        /// $($attribute.DisplayName)
+        /// $($attribute.Description)
+        /// </summary>
+        public int? $($attribute.CsName) {
+            get { return GetNullable<int>(AttributeNames.$($attribute.CsName)); }
+            set { SetNullable (AttributeNames.$($attribute.CsName), value); }
+        }

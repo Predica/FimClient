@@ -1,0 +1,17 @@
+
+        RmList<RmReference> $($attribute.MemberName);
+        
+        /// <summary>
+        /// $($attribute.DisplayName)
+        /// $($attribute.Description)
+        /// </summary>
+        public IList<RmReference> $($attribute.CsName) {
+            get {
+                if ($($attribute.MemberName) == null) {
+                    lock (base.attributes) {
+                        $($attribute.MemberName) = GetMultiValuedReference(AttributeNames.$($attribute.CsName));
+                    }
+                }
+                return $($attribute.MemberName);
+            }
+        }

@@ -1,0 +1,17 @@
+
+        RmList<string> $($attribute.MemberName);
+        
+        /// <summary>
+        /// $($attribute.DisplayName)
+        /// $($attribute.Description)
+        /// </summary>
+        public IList<string> $($attribute.CsName) {
+            get {
+                if ($($attribute.MemberName) == null) {
+                    lock (base.attributes) {
+                        $($attribute.MemberName) = GetMultiValuedString(AttributeNames.$($attribute.CsName));
+                    }
+                }
+                return $($attribute.MemberName);
+            }
+        }

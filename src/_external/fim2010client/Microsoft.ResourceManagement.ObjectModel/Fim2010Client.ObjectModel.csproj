@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CECB3A49-A780-4558-A402-1F3FF42B0B18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.ResourceManagement.ObjectModel</RootNamespace>
+    <AssemblyName>Microsoft.ResourceManagement.ObjectModel.Predica</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\Microsoft.ResourceManagement.ObjectModel.Predica.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Microsoft.ResourceManagement.ObjectModel.Predica.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityManagement.Logging, Version=4.0.3594.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\lib\Windows Identity Foundation\v3.5\Microsoft.IdentityManagement.Logging.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.ResourceManagement, Version=4.0.3594.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\lib\Windows Identity Foundation\v3.5\Microsoft.ResourceManagement.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.ResourceManagement.WorkflowContract, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\lib\Windows Identity Foundation\v3.5\Microsoft.ResourceManagement.WorkflowContract.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.IdentityModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceTypes\RmActivityInformationConfiguration.cs" />
+    <Compile Include="ResourceTypes\RmApproval.cs" />
+    <Compile Include="ResourceTypes\RmApprovalResponse.cs" />
+    <Compile Include="ResourceTypes\RmApproval_ext.cs" />
+    <Compile Include="ResourceTypes\RmAttributeTypeDescription.cs" />
+    <Compile Include="ResourceTypes\RmBindingDescription.cs" />
+    <Compile Include="ResourceTypes\RmDetectedRuleEntry.cs" />
+    <Compile Include="ResourceTypes\RmDomainConfiguration.cs" />
+    <Compile Include="ResourceTypes\RmExpectedRuleEntry.cs" />
+    <Compile Include="ResourceTypes\RmNavigationBarConfiguration.cs" />
+    <Compile Include="ResourceTypes\RmObjectTypeDescription.cs" />
+    <Compile Include="ResourceTypes\RmPerson_ext.cs" />
+    <Compile Include="ResourceTypes\RmGroup.cs" />
+    <Compile Include="ResourceTypes\RmPerson.cs" />
+    <Compile Include="ResourceTypes\RmRequest.cs" />
+    <Compile Include="ResourceTypes\RmRequest_ext.cs" />
+    <Compile Include="ResourceTypes\RmSet.cs" />
+    <Compile Include="RmAttributeChange.cs" />
+    <Compile Include="RmAttributeChangeOperation.cs" />
+    <Compile Include="RmAttributeName_ISerializable.cs" />
+    <Compile Include="RmAttributeValue.cs" />
+    <Compile Include="RmAttributeName.cs" />
+    <Compile Include="RmAttributeValueMulti.cs" />
+    <Compile Include="RmAttributeValueSingle.cs" />
+    <Compile Include="RmAttributeValue_ISerializable.cs" />
+    <Compile Include="RmBinary_ISerializable.cs" />
+    <Compile Include="RmResource.cs" />
+    <Compile Include="RmResourceChanges.cs" />
+    <Compile Include="RmBinary.cs" />
+    <Compile Include="RmList.cs" />
+    <Compile Include="RmReference.cs" />
+    <Compile Include="RmResource_IFormattable.cs" />
+    <Compile Include="RmResource_ISerializable.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

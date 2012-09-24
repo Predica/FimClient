@@ -1,0 +1,26 @@
+        #endregion
+
+        #region Protected methods
+        
+        /// <summary>
+        /// Ensures all attributes exist.
+        /// </summary>
+        protected override void EnsureSpecificAttributesExist() {
+${ensureAllAttributesExistContents}
+        }
+        
+        #endregion
+        
+        #region AttributeNames
+        
+        /// <summary>
+        /// Names of ${fimtype} specific attributes
+        /// </summary>
+        public sealed new class AttributeNames {
+${attributeNamesClassContents}
+        }
+        
+        #endregion
+        
+    }
+}

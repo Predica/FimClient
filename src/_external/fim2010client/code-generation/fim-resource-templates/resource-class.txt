@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.ResourceManagement.ObjectModel;
+using System.Runtime.Serialization;
+
+namespace $NAMESPACE {
+    
+    /// <summary>
+    /// ${fimtype} resource.
+    /// Automatically generated on $(Get-Date)
+    /// </summary>
+    [Serializable]
+    public partial class ${clrTypeName} : RmResource {
+
+        /// <summary>
+        /// The type of the wrapped resource.
+        /// </summary>
+        protected const String ResourceType = @`"${fimtype}`";
+
+        /// <summary>
+        /// Gets the FIM name of the wrapped resource type.
+        /// </summary>
+        /// <returns>The FIM name of the wrapped resource type.</returns>
+        public override string GetResourceType() {
+            return ResourceType;
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public ${clrTypeName}()
+            : base() {
+        }
+
+        /// <summary>
+        /// Constructor for serialization.
+        /// </summary>
+        protected ${clrTypeName}(
+            SerializationInfo info,
+            StreamingContext context)
+            : base(info, context) {
+        }
+
+        #region promoted properties
+
+${promotedPropertiesContents}
+        
+        #endregion
+
+        #region Protected methods
+        
+        /// <summary>
+        /// Ensures all attributes exist.
+        /// </summary>
+        protected override void EnsureSpecificAttributesExist() {
+${ensureAllAttributesExistContents}
+            // ensure custom (non FIM-standard) attributes exist.
+            EnsureCustomAttributesExist();
+        }
+        
+        /// <summary>
+        /// Implement this method to ensure that custom attributes, i.e.
+        /// attributes not defined in the default FIM schema, exist.
+        /// </summary>
+        partial void EnsureCustomAttributesExist();
+        
+        #endregion
+        
+        #region AttributeNames
+        
+        /// <summary>
+        /// Names of ${fimtype} specific attributes
+        /// </summary>
+        public sealed new partial class AttributeNames {
+${attributeNamesClassContents}
+        }
+        
+        #endregion
+        
+    }
+}
+        

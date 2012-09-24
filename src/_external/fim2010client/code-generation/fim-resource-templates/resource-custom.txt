@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.ResourceManagement.ObjectModel;
+using System.Runtime.Serialization;
+
+namespace $NAMESPACE {
+    
+    /// <summary>
+    /// Custom attributes of the ${clrTypeName} class.
+    /// Automatically generated on $(Get-Date)
+    /// </summary>
+    /// <remarks>
+    /// This partial class file defines the user-defined attributes of the 
+    /// ${fimtype} type, i.e. those that are not defined in the 
+    /// standard FIM schema.
+    /// </remarks>
+    partial class ${clrTypeName} {
+
+        #region Custom Properties
+${promotedPropertiesContents}
+        
+        #endregion
+
+        #region Protected Methods
+        
+        /// <summary>
+        /// Ensures custom attributes exist.
+        /// </summary>
+        partial void EnsureCustomAttributesExist() {
+${ensureAllAttributesExistContents}
+        }
+        
+        #endregion
+        
+        #region AttributeNames
+        
+        /// <summary>
+        /// Names of custom attributes.
+        /// </summary>
+        partial class AttributeNames {
+${attributeNamesClassContents}
+        }
+        
+        #endregion
+        
+    }
+}
+        
