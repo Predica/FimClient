@@ -76,6 +76,7 @@
     <Compile Include="ResourceTypes\RmDetectedRuleEntry.cs" />
     <Compile Include="ResourceTypes\RmDomainConfiguration.cs" />
     <Compile Include="ResourceTypes\RmExpectedRuleEntry.cs" />
+    <Compile Include="ResourceTypes\Rmma-data.cs" />
     <Compile Include="ResourceTypes\RmNavigationBarConfiguration.cs" />
     <Compile Include="ResourceTypes\RmObjectTypeDescription.cs" />
     <Compile Include="ResourceTypes\RmPerson_ext.cs" />

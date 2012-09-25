@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Errors\MultipleResourceTypesException.cs" />
     <Compile Include="Errors\QueryExecutionException.cs" />
     <Compile Include="Logging\LogContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="FimClient.cs" />
     <Compile Include="Querying\Filter.cs" />
     <Compile Include="Querying\Pagination.cs" />
+    <Compile Include="RuntimeResourceTypeFactory.cs" />
     <Compile Include="Querying\SortingInstructions.cs" />
     <Compile Include="_Utils\ObjectExtensions.cs" />
     <Compile Include="_Utils\StringExtensions.cs" />

@@ -15,7 +15,7 @@ namespace Microsoft.ResourceManagement.ObjectModel.ResourceTypes {
         /// <summary>
         /// The type of the wrapped resource.
         /// </summary>
-        protected const String ResourceType = @`"ma-data`";
+        protected const String ResourceType = @"ma-data";
 
         /// <summary>
         /// Gets the FIM name of the wrapped resource type.

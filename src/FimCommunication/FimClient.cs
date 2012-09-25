@@ -109,9 +109,13 @@ namespace Predica.FimCommunication
             }
         }
 
+        /// <summary>
+        /// Provides an implementation of <see cref="IResourceTypeFactory"/> that will be used by <see cref="IFimClient"/>.
+        /// Override to use application-specific factory.
+        /// </summary>
         protected virtual IResourceTypeFactory CreateResourceTypeFactory()
         {
-            return new DefaultResourceTypeFactory();
+            return new RuntimeResourceTypeFactory();
         }
 
         #endregion

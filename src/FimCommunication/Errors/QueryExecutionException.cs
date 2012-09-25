@@ -11,9 +11,7 @@ namespace Predica.FimCommunication.Errors
         {
         }
 
-        protected QueryExecutionException(
-            SerializationInfo info,
-            StreamingContext context)
+        protected QueryExecutionException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
