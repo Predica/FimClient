@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Predica.FimCommunication  
+namespace Predica.FimCommunication
 {
     public static class TimeSpanExtensions
     {
@@ -8,7 +8,7 @@ namespace Predica.FimCommunication
 
         public static string Format(this TimeSpan @this)
         {
-            return @this.ToString(FORMAT);
+            return new DateTime(1, 1, 1).Add(@this).ToString(FORMAT);
         }
     }
 }
