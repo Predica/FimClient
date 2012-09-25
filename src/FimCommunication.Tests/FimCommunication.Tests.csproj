@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\creating_updating_deleting_objects.cs" />
+    <Compile Include="Client\disposing_client.cs" />
     <Compile Include="Client\executing_paged_queries.cs" />
     <Compile Include="Client\executing_sorted_queries.cs" />
     <Compile Include="Client\executing_xpath_queries.cs" />

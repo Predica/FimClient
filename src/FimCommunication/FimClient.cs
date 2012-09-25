@@ -14,7 +14,7 @@ using Predica.FimCommunication.Querying;
 
 namespace Predica.FimCommunication
 {
-    public interface IFimClient
+    public interface IFimClient : IDisposable
     {
         IEnumerable<TResource> EnumerateAll<TResource>(string query, AttributesToFetch attributes = null) where TResource : RmResource;
         DataPage<TResource> EnumeratePage<TResource>(string query, Pagination pagination, SortingInstructions sorting, AttributesToFetch attributes = null) where TResource : RmResource;
@@ -51,6 +51,11 @@ namespace Predica.FimCommunication
 
         private void Initialize()
         {
+            if (_isDisposed)
+            {
+                throw new ObjectDisposedException("FimClient");
+            }
+
             if (_isInitialized)
             {
                 return;
@@ -179,10 +184,10 @@ namespace Predica.FimCommunication
 
             var ctx = LogContext.WithConfigFormat();
 
+            Initialize();
+
             try
             {
-                Initialize();
-
                 _log.Debug(ctx.Format("Executing simple enumeration: {0} with attributes {1}"), query, attributes.GetNames().ToJSON());
 
                 var results = _defaultClient.Enumerate(query, attributes.GetNames())
@@ -255,7 +260,7 @@ namespace Predica.FimCommunication
             var pullRequest = new PullRequest();
             // set enumeration context from previous query
             pullRequest.EnumerationContext = enumerateResponse.EnumerationContext;
-            
+
             // if attributes names to fetch defined...
             var attributeNames = attributes.GetNames();
             if (attributeNames != null)
@@ -396,6 +401,23 @@ namespace Predica.FimCommunication
                 _log.Warn(ctx.Format("Object with id {0} not found"), id);
             }
             return resource;
+        }
+
+        private volatile bool _isDisposed;
+        public void Dispose()
+        {
+            if (_isDisposed)
+            {
+                throw new ObjectDisposedException("FimClient");
+            }
+            _isDisposed = true;
+
+            _log.Debug("Disposing FIM client by user {0}", System.Threading.Thread.CurrentPrincipal.Identity.Name);
+
+            _defaultClient.Dispose();
+            _defaultClient = null;
+            _pagedQueriesClient.Close();
+            _pagedQueriesClient = null;
         }
 
         private static readonly Logger _log = LogManager.GetCurrentClassLogger();
