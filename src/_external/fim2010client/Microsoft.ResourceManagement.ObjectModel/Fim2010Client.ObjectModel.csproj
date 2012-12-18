@@ -44,12 +44,12 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.ResourceManagement, Version=4.0.3594.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\lib\Windows Identity Foundation\v3.5\Microsoft.ResourceManagement.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\FIM 2010 Service\Microsoft.ResourceManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ResourceManagement.WorkflowContract, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\lib\Windows Identity Foundation\v3.5\Microsoft.ResourceManagement.WorkflowContract.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\FIM 2010 Service\Microsoft.ResourceManagement.WorkflowContract.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
