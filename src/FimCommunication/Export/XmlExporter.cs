@@ -23,7 +23,7 @@ namespace Predica.FimCommunication.Export
         {
             _log.Debug("Fetching export objects for query {0}", xpath);
 
-            string url = ConfigurationManager.AppSettings["fimServiceBaseUrl"];
+            string url = ConfigurationManager.AppSettings["fimAddress"] + ":5725";
 
             var exportConfig = new ExportConfig
             {
