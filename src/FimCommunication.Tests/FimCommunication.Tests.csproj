@@ -33,6 +33,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="xunit">
       <HintPath>..\..\lib\xunit-1.8\xunit.dll</HintPath>
     </Reference>
@@ -52,8 +54,10 @@
     <Compile Include="Client\Querying\AttributesToFetchTests.cs" />
     <Compile Include="Client\Querying\FilterTests.cs" />
     <Compile Include="Client\Querying\PaginationTests.cs" />
+    <Compile Include="Export\XmlExporterTests.cs" />
     <Compile Include="fim2010client\RmResourceChangesTests.cs" />
     <Compile Include="FimIntegrationTestBase.cs" />
+    <Compile Include="Import\XmlImporterTests.cs" />
     <Compile Include="Logging\LogContextTests_Format.cs" />
     <Compile Include="Logging\LogContextTests_Tokenize.cs" />
     <Compile Include="Logging\LogContextTests_TokenizeWithTime.cs" />
@@ -77,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Import\exported-users.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
