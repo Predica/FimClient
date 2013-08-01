@@ -33,11 +33,15 @@ namespace Predica.FimCommunication
 
         private readonly string _fimUrl;
         private readonly NetworkCredential _credential;
+        private readonly TimeSpan? _receiveTimeout;
+        private readonly int? _maxReceivedMessageSize;
 
-        public FimClient(string fimUrl = null, NetworkCredential credential = null)
+        public FimClient(string fimUrl = null, NetworkCredential credential = null, TimeSpan? receiveTimeout = null, int? maxReceivedMessageSize = null)
         {
             _fimUrl = fimUrl;
             _credential = credential;
+            _receiveTimeout = receiveTimeout;
+            _maxReceivedMessageSize = maxReceivedMessageSize;
             Initialize();
         }
 
@@ -74,12 +78,12 @@ namespace Predica.FimCommunication
                 // client used for paged queries
                 _pagedQueriesClient = _fimUrl == null
                     ? new WsEnumerationClient()
-                    : new WsEnumerationClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsEnumeration(_fimUrl));
+                    : new WsEnumerationClient(Bindings.ServiceMultipleTokenBinding_Common(_receiveTimeout, _maxReceivedMessageSize), DefaultEndpoints.WsEnumeration(_fimUrl));
 
                 // client used for all other operations
                 _defaultClient = _fimUrl == null
                     ? new DefaultClient()
-                    : new DefaultClient(_fimUrl);
+                    : new DefaultClient(_fimUrl, _receiveTimeout, _maxReceivedMessageSize);
 
                 if (_credential != null)
                 {

@@ -53,13 +53,13 @@ namespace Microsoft.ResourceManagement.Client {
 
         #region Constructors
 
-        public DefaultClient(string fimUrl)
+        public DefaultClient(string fimUrl, TimeSpan? receiveTimeout = null, int? maxReceivedMessageSize = null)
         {
-            this.wsTransferClient = new WsTransferClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsTransfer(fimUrl));
-            this.wsTransferFactoryClient = new WsTransferFactoryClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsTransferFactory(fimUrl));
-            this.wsEnumerationClient = new WsEnumerationClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.WsEnumeration(fimUrl));
-            this.mexClient = new MexClient(Bindings.MetadataExchangeHttpBinding_IMetadataExchange, DefaultEndpoints.Mex(fimUrl));
-            this.alternateClient = new AlternateClient(Bindings.ServiceMultipleTokenBinding_Common, DefaultEndpoints.Alternate(fimUrl));
+            this.wsTransferClient = new WsTransferClient(Bindings.ServiceMultipleTokenBinding_Common(receiveTimeout, maxReceivedMessageSize), DefaultEndpoints.WsTransfer(fimUrl));
+            this.wsTransferFactoryClient = new WsTransferFactoryClient(Bindings.ServiceMultipleTokenBinding_Common(receiveTimeout, maxReceivedMessageSize), DefaultEndpoints.WsTransferFactory(fimUrl));
+            this.wsEnumerationClient = new WsEnumerationClient(Bindings.ServiceMultipleTokenBinding_Common(receiveTimeout, maxReceivedMessageSize), DefaultEndpoints.WsEnumeration(fimUrl));
+            this.mexClient = new MexClient(Bindings.MetadataExchangeHttpBinding_IMetadataExchange(receiveTimeout, maxReceivedMessageSize), DefaultEndpoints.Mex(fimUrl));
+            this.alternateClient = new AlternateClient(Bindings.ServiceMultipleTokenBinding_Common(receiveTimeout, maxReceivedMessageSize), DefaultEndpoints.Alternate(fimUrl));
             this.resourceFactory = new RmResourceFactory();
             this.requestFactory = new RmRequestFactory();
         }
